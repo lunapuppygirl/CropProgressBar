@@ -26,6 +26,9 @@ platform {
 		required("fabricloader") {
 			fabricLikeVersionRange = ">=${prop("deps.fabric-loader")}"
 		}
+		required("yet_another_config_lib_v3") {
+			fabricLikeVersionRange = ">=${prop("deps.yacl")}"
+		}
 		optional("modmenu") {}
 	}
 }
@@ -62,6 +65,7 @@ repositories {
 	mavenCentral()
 	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	strictMaven("https://maven.isxander.dev/releases", "dev.isxander") { name = "Xander Maven" }
 }
 
 configurations.all {
@@ -83,5 +87,6 @@ dependencies {
 	// implementation(libs.moulberry.mixinconstraints)
 	// include(libs.moulberry.mixinconstraints)
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("deps.fabric-api")}")
+	modImplementation("dev.isxander:yet-another-config-lib:${prop("deps.yacl")}+${prop("deps.minecraft").replace("26.1.2", "26.1")}-fabric")
 	modLocalRuntime("com.terraformersmc:modmenu:${prop("deps.modmenu")}")
 }
